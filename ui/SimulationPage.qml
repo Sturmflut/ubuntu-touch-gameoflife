@@ -20,8 +20,6 @@ Page {
 
             onTriggered: {
                 internal.running = !internal.running
-
-                console.log("Paused")
             }
         },
 
@@ -82,8 +80,6 @@ Page {
         running: internal.running
 
         onTriggered: {
-            console.log("Timer is " + running + " at interval " + interval)
-
             pixelGrid.update()
             pixelGrid.drawCells()
         }
