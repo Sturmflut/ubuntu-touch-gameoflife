@@ -139,7 +139,7 @@ Page {
                 width: height
 
                 onClicked: {
-                    if (internal.gameSpeed < 20) {
+                    if (internal.gameSpeed < 40) {
                         internal.gameSpeed = internal.gameSpeed + 1
                    }
                 }
