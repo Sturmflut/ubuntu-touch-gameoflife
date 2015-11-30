@@ -149,7 +149,7 @@ Page {
                 id: statusLabel
                 fontSize: "large"
 
-                text: i18n.tr("Individuals:") + " 0"
+                text: i18n.tr("Cells:") + " 0"
             }
         }
 
@@ -264,7 +264,7 @@ Page {
                                 count++
                         }
 
-                    statusLabel.text = i18n.tr("Individuals:") + " " + count
+                    statusLabel.text = i18n.tr("Cells:") + " " + count
                 }
             }
 
