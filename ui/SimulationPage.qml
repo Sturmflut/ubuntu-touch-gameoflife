@@ -34,6 +34,8 @@ Page {
             onTriggered: {
                 pixelGrid.update()
                 pixelGrid.drawCells()
+
+                internal.numSteps++
             }
         },
 
@@ -48,6 +50,8 @@ Page {
 
                 pixelGrid.update()
                 pixelGrid.drawCells()
+
+                internal.numSteps++
 
                 internal.running = true
             }
@@ -69,6 +73,8 @@ Page {
 
         property var state: []
         property var oldState: []
+
+        property int numSteps: 0
     }
 
 
@@ -77,11 +83,15 @@ Page {
 
         interval: 3000 / internal.gameSpeed
         repeat: true
-        running: internal.running
+        running: internal.running && simulationPage.visible
 
         onTriggered: {
             pixelGrid.update()
             pixelGrid.drawCells()
+
+            internal.numSteps++
+
+
         }
     }
 
@@ -142,10 +152,29 @@ Page {
             }
 
             Label {
-                id: statusLabel
                 fontSize: "large"
 
-                text: i18n.tr("Cells:") + " 0"
+                text: i18n.tr("Steps:")
+            }
+
+            Label {
+                id: stepsLabel
+                fontSize: "large"
+
+                text: "" + internal.numSteps
+            }
+
+            Label {
+                fontSize: "large"
+
+                text: i18n.tr("Cells:")
+            }
+
+            Label {
+                id: numCellsLabel
+                fontSize: "large"
+
+                text: ""
             }
         }
 
@@ -260,7 +289,7 @@ Page {
                                 count++
                         }
 
-                    statusLabel.text = i18n.tr("Cells:") + " " + count
+                    numCellsLabel.text = "" + count
                 }
             }
 

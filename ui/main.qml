@@ -7,7 +7,7 @@ import Ubuntu.Components 1.3
     \brief MainView with a Label and Button elements.
 */
 MainView {
-   id: mainView
+    id: mainView
     // objectName for functional testing purposes (autopilot-qt5)
     objectName: "mainView"
 
@@ -20,13 +20,18 @@ MainView {
     property int cellSurvival: 2
     property int cellBirth: 3
 
-    SimulationPage {
+    PageStack {
+        id: mainStack
 
+        SimulationPage {
+            id: simulationPage
+            visible: false
+        }
+
+        AboutPage {
+            visible: false
+        }
+
+        Component.onCompleted: mainStack.push(simulationPage)
     }
-
-//    PageStack {
-//        id: mainStack
-//    }
-
-//    Component.onCompleted: mainStack.push(Qt.resolvedUrl("ui/SimulationPage.qml"))
 }
